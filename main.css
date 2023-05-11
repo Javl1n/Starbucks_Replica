@@ -1,0 +1,55 @@
+@import url(./ASSETS/Font/SoDo-Sans/stylesheet.css);
+
+:root {
+    --green: 160, 100, 22;
+    --green-hex: #00704b;
+    --black: 45, 11, 14;
+    --black-hex: #202823;
+    --beige: 11, 71, 72;
+    --full-green: hsl(var(--green));
+}
+
+*{
+    margin: 0;
+}
+
+@media screen {
+    
+}
+
+.logo{
+    position: absolute;
+    left: 130px;
+    top: 30px;
+    width: 60px;
+    height: 60px;
+    fill: var(--green-hex);
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    padding: 50px 0px;
+    margin: 0px 200px;
+    justify-content: space-between;
+    font-family: 'SoDo Sans';
+    font-weight: 600;
+}
+
+.grid{
+    display: grid;
+}
+
+.grid-horizontal{
+    grid-template-columns: repeat(1fr);
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.navi{
+    width: auto;
+    height: 15px;
+}
+

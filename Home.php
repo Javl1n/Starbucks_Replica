@@ -64,13 +64,19 @@ $row = $user->details($sql);
             </li>
             <li class="dropdown">
               <button class="username flex">
-                <img src="./ASSETS/profiles/empty.jpg" alt="profile" class="profile-pic">
+                <img src="./ASSETS/profiles/<?php
+                                            if (empty($row['filename'])) {
+                                              echo 'empty.jpg';
+                                            } else {
+                                              echo $row['file_name'];
+                                            }
+                                            ?>" alt="profile" class="profile-pic">
                 <p>
                   <?php echo $row['username']; ?>
                 </p>
               </button>
               <div class="dropdown-content">
-                <a href="#">Update Profile</a>
+                <a href="edit.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>
                 <?php
                 $user = $row['administration_priveleges'];
                 if ($user == 1) {

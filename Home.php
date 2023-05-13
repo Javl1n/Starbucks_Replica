@@ -63,17 +63,8 @@ $row = $user->details($sql);
               </a>
             </li>
             <li class="dropdown">
-              <button class="username flex">
-                <img src="./ASSETS/profiles/<?php
-                                            if (empty($row['filename'])) {
-                                              echo 'empty.jpg';
-                                            } else {
-                                              echo $row['file_name'];
-                                            }
-                                            ?>" alt="profile" class="profile-pic">
-                <p>
-                  <?php echo $row['username']; ?>
-                </p>
+              <button class="username">
+                <?php echo $row['username']; ?>
               </button>
               <div class="dropdown-content">
                 <a href="edit.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>

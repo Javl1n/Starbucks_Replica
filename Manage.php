@@ -24,7 +24,6 @@ $row = $user->details($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage</title>
     <?php echo $bootstrap; ?>
-    <link href="main.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,6 +46,14 @@ $row = $user->details($sql);
                                 Menu
                             </a>
                         </li>
+                        <li class="active">
+                            <?php
+                            $user = $row['administration_priveleges'];
+                            if ($user == 1) {
+                                echo "<a href='manage.php'>Manage</a>";
+                            }
+                            ?>
+                        </li>
                     </div>
                     <div class="grid grid-horizontal">
                         <li class="dropdown">
@@ -55,20 +62,14 @@ $row = $user->details($sql);
                             </button>
                             <div class="dropdown-content">
                                 <a href="edit_profile.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>
-                                <?php
-                                $user = $row['administration_priveleges'];
-                                if ($user == 1) {
-                                    echo "<a href='manage.php'>Manage</a>";
-                                }
-                                ?>
                             </div>
                         </li>
                         <li>
-                            <form action="logout.php">
-                                <button class="nav-button">
-                                    Logout
-                                </button>
-                            </form>
+                            <button class="nav-button red-button">
+                                <a href="logout.php">
+                                    logout
+                                </a>
+                            </button>
                         </li>
                     </div>
                 </ul>
@@ -84,13 +85,7 @@ $row = $user->details($sql);
                         <h1> Starbucks Menu Management </h1>
                     </div>
                     <div class="card-body">
-
-                        <form action="add.php"><button class="nav-button green-button">Add New</button></form>
-
-                        <br />
-                        <br />
-
-                        <table class="table">
+                        <table class="table align-center">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -123,22 +118,27 @@ $row = $user->details($sql);
                                         <td><?php echo $name ?></td>
                                         <td><?php echo $category ?></td>
                                         <td><?php echo $calories ?></td>
-                                        <td><img src="./ASSETS/menus/<?php echo $picture; ?>" alt="picture" class="menu-image"></td>
+                                        <td><img src="./ASSETS/menus/<?php echo $picture; ?>" alt="picture" class="menu-image img-thumbnail"></td>
                                         <td>
 
-                                            <form action="edit_crud.php?edit=<?php echo $uid ?>">
-                                                <button class="nav-button green-button">Edit</button>
-                                            </form> &nbsp;
-
-                                            <form action="delete.php?del=<?php echo $uid ?>">
-                                                <button class="nav-button red-button">Delete</button>
-                                            </form>
+                                            <button class="nav-button green-button">
+                                                <a href='edit_crud.php?edit=<?php echo $uid ?>'>
+                                                    Edit
+                                                </a>
+                                            </button> &nbsp;
+                                            <button class="nav-button red-button">
+                                                <a href="delete.php?del=<?php echo $uid ?>">
+                                                    Delete
+                                                </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 <?php $id++;
                                 } ?>
                             </tbody>
                         </table>
+                        <form action="add.php"><button class="nav-button green-button">Add New</button></form>
+
                     </div>
                 </div>
             </div>

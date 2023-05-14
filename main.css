@@ -29,6 +29,10 @@
   display: flex;
 }
 
+.reverse-flex {
+  flex-direction: column;
+}
+
 .align-center {
   align-items: center;
 }
@@ -63,6 +67,7 @@ ul {
   color: var(--black-hex);
   padding: 0;
   height: 100%;
+  margin-top: 1rem !important;
 }
 
 ul > div {
@@ -153,11 +158,17 @@ li > a:hover .navi{
 .nav-button {
   border: 1px solid var(--black-hex);
   border-radius: 100vh;
-  padding: 10px 20px;
+  padding: 10px;
   background-color: var(--white-hex);
   color: var(--black-hex);
   transition: 0.3s;
   font-weight: 600;
+}
+
+.nav-button > a{
+  text-decoration: none;
+  color: inherit;
+  padding: 10px 20px;
 }
 
 .green-button:hover {
@@ -174,5 +185,5 @@ li > a:hover .navi{
 
 .menu-image {
   border-radius: 100vh;
-  height: 10px;
+  height: 110px;
 }

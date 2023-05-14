@@ -23,7 +23,6 @@ $row = $user->details($sql);
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home</title>
-  <link rel="stylesheet" href="main.css">
   <?php echo $bootstrap; ?>
 </head>
 
@@ -47,6 +46,14 @@ $row = $user->details($sql);
                 Menu
               </a>
             </li>
+            <li>
+              <?php
+              $user = $row['administration_priveleges'];
+              if ($user == 1) {
+                echo "<a href='manage.php'>Manage</a>";
+              }
+              ?>
+            </li>
           </div>
           <div class="grid grid-horizontal">
             <li class="dropdown">
@@ -55,69 +62,20 @@ $row = $user->details($sql);
               </button>
               <div class="dropdown-content">
                 <a href="edit_profile.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>
-                <?php
-                $user = $row['administration_priveleges'];
-                if ($user == 1) {
-                  echo "<a href='manage.php'>Manage</a>";
-                }
-                ?>
               </div>
             </li>
             <li>
-              <form action="logout.php">
-                <button class="nav-button">
-                  Logout
-                </button>
-              </form>
+              <button class="nav-button red-button">
+                <a href="logout.php">
+                  logout
+                </a>
+              </button>
             </li>
           </div>
         </ul>
       </div>
     </nav>
   </header>
-  <!-- <main>
-        <div class="card">
-            <img src="./ASSETS/homepage/teacher and nurses.jpg" alt="card1">
-            <h1 class="card-header">For all they do</h1>
-            <p class="body">Show your gratitude for the teachers and nurses in your life with a thoughtful Starbucks Card.</p>
-            <button class="button-card">Send an eGift</button>
-        </div>
-
-        <div class="card">
-            <img src="./ASSETS/homepage/starbucks reward.jpg" alt="card2">
-            <h1 class="card-header">Spring in your step, Rewards in your cup</h1>
-            <p class="body">Shake up your usual and start earning Rewards —join today!*</p>
-            <button class="button-card">Join now</button>
-        </div>
-
-        <div class="card">
-            <img src="./ASSETS/homepage/nitro.jpg" alt="card3">
-            <h1 class="card-header">Nitro your way</h1>
-            <p class="body">Try the new Cinnamon Caramel Cream Nitro Cold Brew or go for the Vanilla Sweet Cream Nitro Cold Brew.</p>
-            <button class="button-card">Order now</button>
-        </div>
-
-        <div class="card">
-            <img src="./ASSETS/homepage/pink drink.png" alt="card4">
-            <h1 class="card-header">Carefree and cool</h1>
-            <p class="body">Our Pink Drink Starbucks Refreshers® beverage with real strawberry pieces and coconutmilk is a spring-inspired delight.</p>
-            <button class="button-card">Order now</button>
-        </div>
-
-        <div class="card">
-            <img src="./ASSETS/homepage/burger.jpg" alt="card5">
-            <h1 class="card-header">Protein perfection</h1>
-            <p class="body">Pick up a hearty Double-Smoked Bacon, Cheddar & Egg Sandwich for breakfast or lunch.</p>
-            <button class="button-card">Order now</button>
-        </div>
-
-        <div class="card">
-            <img src="./ASSETS/homepage/burger.jpg" alt="card6">
-            <h1 class="card-header">May is Military Appreciation Month</h1>
-            <p class="body">For each Military eGift sold in May, we’ll donate $5 to support our military community.**</p>
-            <button class="button-card">Send an eGift</button>
-        </div>
-    </main> -->
 </body>
 
 </html>

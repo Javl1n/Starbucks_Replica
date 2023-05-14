@@ -24,7 +24,6 @@ $row = $user->details($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <?php echo $bootstrap; ?>
-    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
@@ -46,6 +45,14 @@ $row = $user->details($sql);
                                 Menu
                             </a>
                         </li>
+                        <li>
+                            <?php
+                            $user = $row['administration_priveleges'];
+                            if ($user == 1) {
+                                echo "<a href='Manage.php'>Manage</a>";
+                            }
+                            ?>
+                        </li>
                     </div>
                     <div class="grid grid-horizontal">
                         <li class="dropdown">
@@ -63,11 +70,11 @@ $row = $user->details($sql);
                             </div>
                         </li>
                         <li>
-                            <form action="logout.php">
-                                <button class="nav-button">
-                                    Logout
-                                </button>
-                            </form>
+                            <button class="nav-button red-button">
+                                <a href="logout.php">
+                                    logout
+                                </a>
+                            </button>
                         </li>
                     </div>
                 </ul>

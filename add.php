@@ -46,14 +46,13 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Item</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <?php echo $bootstrap; ?>
     <link href="main.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <nav class="grid shadow">
-
             <div class="grid center">
                 <ul class="flex">
                     <div class="grid grid-horizontal CAPS">
@@ -70,36 +69,30 @@ if (isset($_POST['submit'])) {
                                 Menu
                             </a>
                         </li>
+                        <li>
+                            <?php
+                            $user = $row['administration_priveleges'];
+                            if ($user == 1) {
+                                echo "<a href='Manage.php'>Manage</a>";
+                            }
+                            ?>
+                        </li>
                     </div>
                     <div class="grid grid-horizontal">
-                        <li>
-                            <a href="#" class="flex align-center">
-                                <svg class="navi" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                    <path d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24 C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24 C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z" />
-                                </svg>
-                                Find a Store
-                            </a>
-                        </li>
                         <li class="dropdown">
                             <button class="username">
                                 <?php echo $row['username']; ?>
                             </button>
                             <div class="dropdown-content">
                                 <a href="edit_profile.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>
-                                <?php
-                                $user = $row['administration_priveleges'];
-                                if ($user == 1) {
-                                    echo "<a href='manage.php'>Manage</a>";
-                                }
-                                ?>
                             </div>
                         </li>
                         <li>
-                            <form action="logout.php">
-                                <button class="nav-button">
-                                    Logout
-                                </button>
-                            </form>
+                            <button class="nav-button red-button">
+                                <a href="logout.php">
+                                    logout
+                                </a>
+                            </button>
                         </li>
                     </div>
                 </ul>
@@ -122,21 +115,22 @@ if (isset($_POST['submit'])) {
                                 <label>Item name</label>
                                 <input type="text" name="item_title" class="form-control" placeholder="Enter Item Name" required>
                             </div>
-
+                            <br>
                             <div class="form-group">
                                 <label>Category</label>
                                 <input type="text" name="category" class="form-control" placeholder="Enter Category" required>
                             </div>
-
+                            <br>
                             <div class="form-group">
                                 <label>Calories</label>
                                 <input type="text" name="calories" class="form-control" placeholder="Enter Calories" required>
                             </div>
+                            <br>
                             <div class="form-group">
                                 <label>Picture (note that the picture cannot be updated, "A <i>feature</i>, not a bug")</label>
                                 <input type="file" name="item_picture" class="form-control" required>
                             </div>
-                            <br />
+                            <br>
                             <input type="submit" class="nav-button green-button" name="submit" value="Register">
                         </form>
 

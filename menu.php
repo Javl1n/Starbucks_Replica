@@ -1,8 +1,9 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "");
-$db = mysqli_select_db($connection, "starbucks");
-
 session_start();
+//return to login if not logged in
+if (!isset($_SESSION['user']) || (trim($_SESSION['user']) == '')) {
+    header('location:index.php');
+}
 
 include('bootstrap.php');
 include_once('User.php');
@@ -13,47 +14,22 @@ $user = new User();
 $sql = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user'] . "'";
 $row = $user->details($sql);
 
-
-if (isset($_POST['submit'])) {
-    $name = $_POST['item_title'];
-    $category = $_POST['category'];
-    $calories = $_POST['calories'];
-    $filename = $_FILES['item_picture']['name'];
-    $tempname = $_FILES['item_picture']['tmp_name'];
-    $folder = "./ASSETS/menus/" . $filename;
-
-
-    $sql = "insert into menu(item_title,category,calories,item_picture)values('$name',' $category','$calories', '$filename')";
-
-    if (mysqli_query($connection, $sql)) {
-        echo '<script> location.replace("Manage.php")</script>';
-    } else {
-        echo "Some thing Error" . $connection->error;
-    }
-    if (move_uploaded_file($tempname, $folder)) {
-        echo "<h3>  Image uploaded successfully!</h3>";
-    } else {
-        echo "<h3>  Failed to upload image!</h3>";
-    }
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Item</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="main.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <?php echo $bootstrap; ?>
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <header>
         <nav class="grid shadow">
-
             <div class="grid center">
                 <ul class="flex">
                     <div class="grid grid-horizontal CAPS">
@@ -65,21 +41,13 @@ if (isset($_POST['submit'])) {
                                 </svg>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="menu.php">
                                 Menu
                             </a>
                         </li>
                     </div>
                     <div class="grid grid-horizontal">
-                        <li>
-                            <a href="#" class="flex align-center">
-                                <svg class="navi" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                    <path d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24 C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24 C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z" />
-                                </svg>
-                                Find a Store
-                            </a>
-                        </li>
                         <li class="dropdown">
                             <button class="username">
                                 <?php echo $row['username']; ?>
@@ -89,7 +57,7 @@ if (isset($_POST['submit'])) {
                                 <?php
                                 $user = $row['administration_priveleges'];
                                 if ($user == 1) {
-                                    echo "<a href='manage.php'>Manage</a>";
+                                    echo "<a href='Manage.php'>Manage</a>";
                                 }
                                 ?>
                             </div>
@@ -106,48 +74,28 @@ if (isset($_POST['submit'])) {
             </div>
         </nav>
     </header>
-    <br>
-    <br>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-7">
-                <div class="card">
-                    <div class="card-header">
-                        <h1> ADD ITEM </h1>
-                    </div>
-                    <div class="card-body">
-
-                        <form action="add.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label>Item name</label>
-                                <input type="text" name="item_title" class="form-control" placeholder="Enter Item Name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" name="category" class="form-control" placeholder="Enter Category" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Calories</label>
-                                <input type="text" name="calories" class="form-control" placeholder="Enter Calories" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Picture (note that the picture cannot be updated, "A <i>feature</i>, not a bug")</label>
-                                <input type="file" name="item_picture" class="form-control" required>
-                            </div>
-                            <br />
-                            <input type="submit" class="nav-button green-button" name="submit" value="Register">
-                        </form>
-
-                    </div>
-                </div>
+    <main>
+        <div class="grid">
+            <div class="grid">
+                <h1>Drinks</h1>
+                <ul>
+                    <li>
+                        <a href="">Oleato</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid">
+                <h1>Menu</h1>
+                <h2>Drinks</h2>
+                <HR>
+                </HR>
 
             </div>
+            <div>
 
+            </div>
         </div>
-    </div>
-
+    </main>
 </body>
 
 </html>

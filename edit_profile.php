@@ -1,6 +1,7 @@
 <?php
 //Database Connection
 $con = mysqli_connect("localhost", "root", "", "starbucks");
+
 if (isset($_POST['submit'])) {
 	$eid = $_GET['editid'];
 

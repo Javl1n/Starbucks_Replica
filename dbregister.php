@@ -1,4 +1,5 @@
 <?php
+// include_once();
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $conn = mysqli_connect('localhost', 'root', '', 'starbucks') or die("Connection Failed:" . mysqli_connect_error());
     if (

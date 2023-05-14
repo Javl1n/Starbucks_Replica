@@ -19,6 +19,11 @@ if (isset($_POST['submit'])) {
     } else {
         echo "Some thing Error" . $connection->error;
     }
+    if (move_uploaded_file($tempname, $folder)) {
+        echo "<h3>  Image uploaded successfully!</h3>";
+    } else {
+        echo "<h3>  Failed to upload image!</h3>";
+    }
 }
 ?>
 

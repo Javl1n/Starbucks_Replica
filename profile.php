@@ -1,11 +1,9 @@
 <?php
-
-$connection = mysqli_connect("localhost", "root", "");
-
-$db = mysqli_select_db($connection, "starbucks");
-$edit = $_GET['edit'];
-
 session_start();
+//return to login if not logged in
+if (!isset($_SESSION['user']) || (trim($_SESSION['user']) == '')) {
+    header('location:index.php');
+}
 
 include('bootstrap.php');
 include_once('User.php');
@@ -14,48 +12,9 @@ $user = new User();
 
 //fetch user data
 $sql = "SELECT * FROM users WHERE user_id = '" . $_SESSION['user'] . "'";
-$user = $user->details($sql);
-
-
-$sql = "select * from menu where item_id = '$edit'";
-
-$run = mysqli_query($connection, $sql);
-
-
-while ($row = mysqli_fetch_array($run)) {
-    $uid = $row['item_id'];
-    $item_title = $row['item_title'];
-    $category = $row['category'];
-    $calories = $row['calories'];
-    $profile = $row['item_picture'];
-}
+$row = $user->details($sql);
 
 ?>
-
-<?php
-$connection = mysqli_connect("localhost", "root", "");
-
-$db = mysqli_select_db($connection, "starbucks");
-
-
-if (isset($_POST['submit'])) {
-    $edit = $_GET['edit'];
-    $item_title = $_POST['item_title'];
-    $category = $_POST['category'];
-    $calories = $_POST['calories'];
-
-    $sql = "update menu set item_title= '$item_title',category= '$category',calories='$calories' where item_id =  '$edit'";
-
-    if (mysqli_query($connection, $sql)) {
-
-        echo '<script> location.replace("Manage.php")</script>';
-    } else {
-        echo "Some thing Error" . $connection->error;
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +22,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EXAMPLE NI SANG CRUD</title>
+    <title>Manage</title>
     <?php echo $bootstrap; ?>
 </head>
 
@@ -87,19 +46,19 @@ if (isset($_POST['submit'])) {
                                 Menu
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <?php
-                            $admin = $user['administration_priveleges'];
-                            if ($admin == 1) {
+                            $user = $row['administration_priveleges'];
+                            if ($user == 1) {
                                 echo "<a href='manage.php'>Manage</a>";
                             }
                             ?>
                         </li>
                     </div>
                     <div class="grid grid-horizontal">
-                        <li>
+                        <li class="active">
                             <a href="profile.php">
-                                <?php echo $user['username']; ?>
+                                <?php echo $row['username']; ?>
                             </a>
                         </li>
                         <li>
@@ -117,42 +76,34 @@ if (isset($_POST['submit'])) {
     <br>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Items Update</h1>
+                        <h1><?php echo $row['username'] ?></h1>
                     </div>
                     <div class="card-body">
-
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <label>Item Title</label>
-                                <input type="text" name="item_title" class="form-control" value="<?php echo $item_title; ?>">
-                            </div>
+                        <h2>Name:</h2>
+                        <p><b>Last Name</b>: <?php echo $row['last_name'] ?></p>
+                        <p><b>First Name</b>: <?php echo $row['first_name'] ?></p>
+                        <p><b>Middle Initial</b>: <?php echo $row['middle_initial'] ?></p>
+                        <br>
+                        <h2>Additional Information:</h2>
+                        <p><b>Email</b>: <?php echo $row['email'] ?></p>
+                        <p><b>Contact Number</b>: <?php echo $row['contact_number'] ?></p>
+                        <p><b>Address</b>: <?php echo $row['address_information'] ?></p>
+                        <p><b>password</b>: <?php echo $row['pass_word'] ?>
                             <br>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" name="category" class="form-control" value="<?php echo $category ?>">
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label>Calories</label>
-                                <input type="text" name="calories" class="form-control" placeholder="Enter Mobile" value="<?php echo $calories ?>">
-                            </div>
-                            <br />
-                            <input type="submit" class="nav-button green-button" name="submit" value="Edit">
-                            <button class="nav-button red-button">
-                                <a href="Manage.php">Cancel</a>
-                            </button>
-                        </form>
+                        <p><b>NOTE!</b> The password cannot be changed, so memorize it!!</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="nav-button green-button">
+                            <a href="edit_profile.php?editid=<?php echo $row['user_id'] ?>">edit</a>
+                        </button>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
-
 </body>
 
 </html>

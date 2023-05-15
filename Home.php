@@ -24,6 +24,7 @@ $row = $user->details($sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home</title>
   <?php echo $bootstrap; ?>
+  <link rel="stylesheet" href="style2.css">
 </head>
 
 <body>
@@ -56,13 +57,10 @@ $row = $user->details($sql);
             </li>
           </div>
           <div class="grid grid-horizontal">
-            <li class="dropdown">
-              <button class="username">
+            <li>
+              <a href="profile.php?edit=<?php echo $row['user_id']; ?>">
                 <?php echo $row['username']; ?>
-              </button>
-              <div class="dropdown-content">
-                <a href="edit_profile.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>
-              </div>
+              </a>
             </li>
             <li>
               <button class="nav-button red-button">
@@ -76,6 +74,98 @@ $row = $user->details($sql);
       </div>
     </nav>
   </header>
+  <br>
+  <main>
+    <div class="box mt-0">
+      <div class="container">
+        <div class="box-text">
+          <h1 class="lg">SO. MANY. PRIZES</h1>
+          <p class="p-lg">
+            TEXT HERE!!!
+          </p>
+          <button class="btn btn-primary btn-white"><a href="#"> Check it out</a></button>
+        </div>
+        <div class="box-img">
+          <img src=".\ASSETS\homepage\starbucks reward.jpg" alt="image0">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="box box-secondary">
+      <div class="container">
+        <div class="box-text">
+          <h1>image 1</h1>
+          <p>
+            TEXT HERE!!!
+          </p>
+          <button class="btn btn-primary btn-white"><a href="#">Check it out</a></button>
+        </div>
+        <div class="box-img">
+          <img src=".\ASSETS\homepage\nitro.jpg" alt="image1">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="box">
+      <div class="container">
+        <div class="box-text">
+          <h1>image 2</h1>
+          <p>
+            TEXT HERE!!!
+          </p>
+          <button class="btn btn-primary btn-white"><a href="#">Check it out</a></button>
+        </div>
+        <div class="box-img">
+          <img src=".\ASSETS\homepage\pink drink.png" alt="image2">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="box box-secondary">
+      <div class="container">
+        <div class="box-text box-light">
+          <h1 class="lg">image 3</h1>
+          <p class="p-lg">
+            TEXT HERE!!!
+          </p>
+          <button class="btn btn-primary"><a href="#">Check it out</a></button>
+        </div>
+        <div class="box-img">
+          <img src=".\ASSETS\homepage\burger.jpg" alt="image 3">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="box box-secondary mt-1">
+      <div class="container">
+        <div class="box-text box-light">
+          <h1 class="lg">image 4</h1>
+          <p class="p-lg">
+            TEXT HERE!!!
+          </p>
+          <button class="btn btn-primary"><a href="#">Check it out</a></button>
+        </div>
+        <div class="box-img">
+          <img src=".\ASSETS\homepage\teacher and nurses.jpg" alt="image 4">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="box">
+      <div class="container">
+        <div class="box-text box-light">
+          <h1 class="lg">image 5</h1>
+          <p class="p-lg">
+            TEXT HERE!!!
+          </p>
+          <button class="btn btn-primary"><a href="#">Check it out</a></button>
+        </div>
+        <div class="box-img">
+          <img src=".\ASSETS\homepage\military.jpg" alt="image 5">
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 
 </html>

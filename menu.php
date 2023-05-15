@@ -55,19 +55,10 @@ $row = $user->details($sql);
                         </li>
                     </div>
                     <div class="grid grid-horizontal">
-                        <li class="dropdown">
-                            <button class="username">
+                        <li>
+                            <a href="profile.php">
                                 <?php echo $row['username']; ?>
-                            </button>
-                            <div class="dropdown-content">
-                                <a href="edit_profile.php?editid=<?php echo htmlentities($row['user_id']); ?>">Update Profile</a>
-                                <?php
-                                $user = $row['administration_priveleges'];
-                                if ($user == 1) {
-                                    echo "<a href='Manage.php'>Manage</a>";
-                                }
-                                ?>
-                            </div>
+                            </a>
                         </li>
                         <li>
                             <button class="nav-button red-button">

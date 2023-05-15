@@ -153,6 +153,9 @@ li > a:hover{
 
 .menu-display{
   border-radius: 100vh;
-  zoom: 50%;
-  width: 100%;
+  padding: 13px;
+}
+
+.gap{
+  margin: 20px;
 }

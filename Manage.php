@@ -76,7 +76,14 @@ $row = $user->details($sql);
     <br>
     <div class="container">
         <div class="row">
+            <div class="col-1">
+                <form action="manage.php"><button class="nav-button green-button">Menu</button></form>
+            </div>
+            <div class="col-1">
+                <form action="users_manage.php"><button class="nav-button green-button">Users</button></form>
+            </div>
             <div class="col-md-12">
+                <br>
                 <div class="card">
                     <div class="card-header">
                         <h1> Starbucks Menu Management </h1>

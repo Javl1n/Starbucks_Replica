@@ -2,9 +2,6 @@ to do list:
 
 
 
-Menu
-
-create file for each menu_name (1)
 
 crud profile
 

@@ -19,16 +19,17 @@ $row = $user->details($sql);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage</title>
     <?php echo $bootstrap; ?>
 </head>
 
 <body>
     <header>
         <nav class="grid shadow">
+
             <div class="grid center">
                 <ul class="flex">
                     <div class="grid grid-horizontal CAPS">
@@ -40,16 +41,16 @@ $row = $user->details($sql);
                                 </svg>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="menu.php">
                                 Menu
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <?php
                             $user = $row['administration_priveleges'];
                             if ($user == 1) {
-                                echo "<a href='Manage.php'>Manage</a>";
+                                echo "<a href='manage.php'>Manage</a>";
                             }
                             ?>
                         </li>
@@ -73,51 +74,93 @@ $row = $user->details($sql);
         </nav>
     </header>
     <br>
-    <main>
-        <div class="container">
-            <div class="row">
-                <h1>Drinks</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <form action="manage.php"><button class="nav-button green-button">Menu</button></form>
             </div>
-            <hr>
-            <div class="row">
-                <?php
-                $connection = mysqli_connect("localhost", "root", "");
-                $db = mysqli_select_db($connection, "starbucks");
+            <div class="col-1">
+                <form action="users_manage.php"><button class="nav-button green-button">Users</button></form>
+            </div>
 
-                $sql = "select * from menu";
-                $run = mysqli_query($connection, $sql);
-                $id = 1;
+            <div class="col-md-13">
+                <div class="card">
+                    <div class="card-header">
+                        <h1> Starbucks Users Management </h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table align-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Contact Number</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Option</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $connection = mysqli_connect("localhost", "root", "");
+                                $db = mysqli_select_db($connection, "starbucks");
 
-                while ($row = mysqli_fetch_array($run)) {
-                    $uid = $row['item_id'];
-                    $name = $row['item_title'];
-                    $category = $row['category'];
-                    $calories = $row['calories'];
-                    $picture = $row['item_picture'];
-                ?>
-                    <div class="col-2 gap">
-                        <div class="row">
-                            <img src="./ASSETS/menus/<?php echo $picture; ?>" alt="picture" class="menu-display img-fluid mx-auto">
-                        </div>
-                        <div class="row justify-content-center">
-                            <p><b>Category: </b><?php echo $category; ?></p>
-                        </div>
-                        <div class="row justify-content-center">
-                            <p><?php echo $calories; ?> calories</p>
-                        </div>
-                        <div class="row text-center">
-                            <p><b><?php echo $name; ?></b></p>
-                        </div>
+                                $sql = "select * from users";
+                                $run = mysqli_query($connection, $sql);
+                                $id = 1;
+
+                                while ($row = mysqli_fetch_array($run)) {
+                                    $uid = $row['user_id'];
+                                    $status = $row['administration_priveleges'];
+                                    $username = $row['username'];
+                                    $first_name = $row['first_name'];
+                                    $last_name = $row['last_name'];
+                                    $middle_initial = $row['middle_initial'];
+                                    $full_name = $first_name . " " . $middle_initial . " " . $last_name;
+                                    $email = $row['email'];
+                                    $contact_number = $row['contact_number'];
+                                    $address_information = $row['address_information'];
+                                ?>
+
+                                    <tr>
+                                        <td><?php echo $uid ?></td>
+                                        <td><?php if ($status == 1) {
+                                                echo "Admin";
+                                            } else {
+                                                echo "User";
+                                            }
+                                            ?></td>
+                                        <td><?php echo $username ?></td>
+                                        <td><?php echo $full_name ?></td>
+                                        <td><?php echo $email ?></td>
+                                        <td><?php echo $contact_number ?></td>
+                                        <td><?php echo $address_information ?></td>
+                                        <td>
+
+                                            <button class="nav-button green-button">
+                                                <a href='edit_profile.php?editid=<?php echo $uid ?>'>
+                                                    Edit
+                                                </a>
+                                            </button> &nbsp;
+                                            <button class="nav-button red-button">
+                                                <a href="delete_user.php?del=<?php echo $uid; ?>">
+                                                    Delete
+                                                </a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php $id++;
+                                } ?>
+                            </tbody>
+                        </table>
 
                     </div>
-
-
-                <?php $id++;
-                }
-                ?>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 </body>
 
 </html>

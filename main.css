@@ -56,6 +56,7 @@ nav{
   fill: var(--green-hex);
 }
 
+
 ul {
   list-style: none;
   width: 80%;
@@ -93,13 +94,8 @@ li > a {
 
 li > a:hover{
   color: var(--green-hex);
+  text-decoration: none;
 }
-
-li > a:hover .navi{
-  fill: var(--green-hex);
-}
-
-
 
 .CAPS{
   text-transform: uppercase;
@@ -113,39 +109,6 @@ li > a:hover .navi{
   border: none;
   background-color: var(--white-hex);
   color: inherit;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 180px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: var(--black-hex);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content{
-  display: block;
-}
-
-.dropdown:hover .username{
-  color: var(--green-hex);
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
 }
 
 .navi {

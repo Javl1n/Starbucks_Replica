@@ -130,14 +130,19 @@ if (isset($_POST['submit'])) {
                                 <input type="text" name="item_title" class="form-control" value="<?php echo $item_title; ?>">
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" name="category" class="form-control" value="<?php echo $category ?>">
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label>Calories</label>
-                                <input type="text" name="calories" class="form-control" placeholder="Enter Mobile" value="<?php echo $calories ?>">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <input type="text" name="category" class="form-control" value="<?php echo $category ?>">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Calories</label>
+                                        <input type="text" name="calories" class="form-control" placeholder="Enter Mobile" value="<?php echo $calories ?>">
+                                    </div>
+                                </div>
                             </div>
                             <br />
                             <input type="submit" class="nav-button green-button" name="submit" value="Edit">

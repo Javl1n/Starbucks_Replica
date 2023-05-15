@@ -1,6 +1,16 @@
 to do list:
-offline bootstrap
+offline bootstrap - more or less haha
+
 Menu
+
 create file for each menu_name (1)
-read profile information
+
 crud profile
+
+add age and birthday to the users table - hard so not possible
+
+fix the home page
+
+log in page
+
+registration page

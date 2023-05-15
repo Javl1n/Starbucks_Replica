@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                                 Menu
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <?php
                             $user = $row['administration_priveleges'];
                             if ($user == 1) {
@@ -113,22 +113,30 @@ if (isset($_POST['submit'])) {
                                 <input type="text" name="item_title" class="form-control" placeholder="Enter Item Name" required>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" name="category" class="form-control" placeholder="Enter Category" required>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <input type="text" name="category" class="form-control" placeholder="Enter Category" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Calories</label>
+                                        <input type="text" name="calories" class="form-control" placeholder="Enter Calories" required>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label>Calories</label>
-                                <input type="text" name="calories" class="form-control" placeholder="Enter Calories" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label>Picture (note that the picture cannot be updated, "A <i>feature</i>, not a bug")</label>
+                                <label>Picture (note that the picture cannot be updated, "A <b><i>feature</i>,</b> not a bug")</label>
                                 <input type="file" name="item_picture" class="form-control" required>
                             </div>
                             <br>
                             <input type="submit" class="nav-button green-button" name="submit" value="Register">
+                            <button class="nav-button red-button">
+                                <a href="Manage.php">Cancel</a>
+                            </button>
                         </form>
 
                     </div>

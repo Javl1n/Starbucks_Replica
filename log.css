@@ -1,0 +1,113 @@
+@import url(./ASSETS/Font/SoDo-Sans/stylesheet.css);
+
+:root {
+    --green: 160, 100, 22;
+    --green-hex: #00704b;
+    --black: 45, 11, 14;
+    --black-hex: #202823;
+    --beige: 11, 71, 72;
+    --full-green: hsl(var(--green));
+}
+body 
+{
+  font-family:'Open Sans', sans-serif; 
+  background: #fff;  
+  background: #fff; 
+  color:whitesmoke;
+}
+
+
+h1{
+    text-align: center;
+    color: var(--black-hex);
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:35rem;
+    margin: auto;
+    color: var(--black-hex);
+    background-color: transparent;
+    border-radius: 12px;
+    border: transparent;
+    padding: 20px 25px;
+}
+
+input{
+    width: 100%;
+    margin: 0;
+    border-radius: 10px;
+    padding: 10px 18px;
+    box-sizing: border-box;
+    border-color: var(--black-hex);
+  }
+
+button {
+    background-color: var(--green-hex);
+    color: white;
+    padding: 5px;
+    border-radius: 5100vh;
+    margin: 7px 0;
+    width: 30%;
+    font-size: 18px;
+    align-self: center;
+  }
+
+.headingsContainer{
+    text-align: center;
+}
+
+.headingsContainer p{
+    color: gray;
+}
+.mainContainer{
+    padding: 16px;
+    width: 80%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+  .subcontainer{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+.subcontainer a{
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+span.forgotpsd a {
+    float: right;
+    color: whitesmoke;
+    padding-top: 16px;
+  }
+
+.forgotpsd a{
+    color: var(--green-hex);
+  }
+  
+.forgotpsd a:link{
+    text-decoration: none;
+  }
+
+  .register{
+    color: var(--black-hex);
+    text-align: center;
+  }
+  
+  .register a{
+    color: var(--green-hex);
+  }
+  
+  .register a:link{
+    text-decoration: none;
+  }

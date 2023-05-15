@@ -1,0 +1,103 @@
+@import url(./ASSETS/Font/SoDo-Sans/stylesheet.css);
+
+:root {
+    --green: 160, 100, 22;
+    --green-hex: #00704b;
+    --black: 45, 11, 14;
+    --black-hex: #202823;
+    --beige: 11, 71, 72;
+    --full-green: hsl(var(--green));
+}
+body 
+{
+  font-family:'Open Sans', sans-serif; 
+  background: #fff;  
+  background: #fff; 
+  color:whitesmoke;
+}
+
+
+h1{
+    text-align: center;
+    color: var(--black-hex);
+}
+
+
+form{
+    width:30rem;
+    margin: auto;
+    color:var(--black-hex);
+    background-color: white;
+    border-radius: 12px;
+    border: var(--black-hex);
+    padding: 20px 25px;
+}
+
+input, textarea{
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    padding: 15px 18px;
+    box-sizing: border-box;
+    border-color: var(--black-hex);
+  }
+
+button {
+    background-color: #00754a;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 5100vh;
+    margin: 7px 0;
+    width: 100%;
+    font-size: 18px;
+  }
+
+
+.headingsContainer{
+    text-align: center;
+}
+
+.headingsContainer p{
+    color: gray;
+}
+.mainContainer{
+    padding: 16px;
+}
+
+
+.subcontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subcontainer a{
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+  .register{
+    color: var(--black-hex);
+    text-align: center;
+  }
+  
+  .register a{
+    color: #00754a;
+  }
+  
+  .register a:link{
+    text-decoration: none;
+  }
+
+  /* Media queries for the responsiveness of the page */
+  @media screen and (max-width: 600px) {
+    form{
+      width: 25rem;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    form{
+      width: 20rem;
+    }
+  }

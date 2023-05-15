@@ -150,3 +150,9 @@ li > a:hover{
   border-radius: 100vh;
   height: 110px;
 }
+
+.menu-display{
+  border-radius: 100vh;
+  zoom: 50%;
+  width: 100%;
+}

@@ -72,25 +72,38 @@ $row = $user->details($sql);
             </div>
         </nav>
     </header>
+    <br>
     <main>
-        <div class="grid">
-            <div class="grid">
+        <div class="container">
+            <div class="row">
                 <h1>Drinks</h1>
-                <ul>
-                    <li>
-                        <a href="">Oleato</a>
-                    </li>
-                </ul>
             </div>
-            <div class="grid">
-                <h1>Menu</h1>
-                <h2>Drinks</h2>
-                <HR>
-                </HR>
+            <hr>
+            <div class="row">
+                <?php
+                $connection = mysqli_connect("localhost", "root", "");
+                $db = mysqli_select_db($connection, "starbucks");
 
-            </div>
-            <div>
+                $sql = "select * from menu";
+                $run = mysqli_query($connection, $sql);
+                $id = 1;
 
+                while ($row = mysqli_fetch_array($run)) {
+                    $uid = $row['item_id'];
+                    $name = $row['item_title'];
+                    $category = $row['category'];
+                    $calories = $row['calories'];
+                    $picture = $row['item_picture'];
+                    if ($category = 'Drinks') {
+                ?>
+                        <div class="col-4">
+                            <img src="./ASSETS/menus/<?php echo $picture; ?>" alt="picture" class="menu-display">
+                        </div>
+
+
+                <?php $id++;
+                    }
+                } ?>
             </div>
         </div>
     </main>

@@ -19,32 +19,6 @@ if (isset($_SESSION['user'])) {
 </head>
 
 <body>
-  <!-- <div>
-    <h1>LOGIN FORM</h1>
-    <div>
-      <div>
-        <div>
-          <div>
-            <h3>Login</h3>
-          </div>
-          <div>
-            <form method="POST" action="login.php">
-              <fieldset>
-                <div>
-                  <input placeholder="Username" type="text" name="username" required>
-                </div>
-                <div>
-                  <input placeholder="Password" type="password" name="pass_word" required>
-                </div>
-                <button type="submit" name="login">Login</button>
-              </fieldset>
-            </form>
-            <a href="register.php">Register</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <br>
   <br>
   <br>

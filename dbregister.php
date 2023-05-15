@@ -44,8 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
         $query = mysqli_query($conn, $sql);
         if ($query) {
-            echo 'Entry Successful <br>';
-            echo "<a href = 'index.php'>Log in page</a>";
+            header('location:index.php');
         } else {
             echo 'Error Occurred';
         }

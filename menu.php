@@ -76,7 +76,7 @@ $row = $user->details($sql);
     <main>
         <div class="container">
             <div class="row">
-                <h1>Drinks</h1>
+                <h1>Menu</h1>
             </div>
             <hr>
             <div class="row">
